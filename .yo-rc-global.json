@@ -1,0 +1,8 @@
+{
+  "generator-jhipster:7.9.2": {
+    "promptValues": {
+      "packageName": "rocks.zipcode.trial",
+      "nativeLanguage": "en"
+    }
+  }
+}
