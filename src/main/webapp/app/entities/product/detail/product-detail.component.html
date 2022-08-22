@@ -1,0 +1,61 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="product">
+      <h2 data-cy="productDetailsHeading"><span jhiTranslate="uniCartApp.product.detail.title">Product</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ product.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="uniCartApp.product.title">Title</span></dt>
+        <dd>
+          <span>{{ product.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="uniCartApp.product.price">Price</span></dt>
+        <dd>
+          <span>{{ product.price }}</span>
+        </dd>
+        <dt><span jhiTranslate="uniCartApp.product.reviews">Reviews</span></dt>
+        <dd>
+          <span>{{ product.reviews }}</span>
+        </dd>
+        <dt><span jhiTranslate="uniCartApp.product.imageURL">Image URL</span></dt>
+        <dd>
+          <span>{{ product.imageURL }}</span>
+        </dd>
+        <dt><span jhiTranslate="uniCartApp.product.productURL">Product URL</span></dt>
+        <dd>
+          <span>{{ product.productURL }}</span>
+        </dd>
+        <dt><span jhiTranslate="uniCartApp.product.cart">Cart</span></dt>
+        <dd>
+          <div *ngIf="product.cart">
+            <a [routerLink]="['/cart', product.cart.id, 'view']">{{ product.cart?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="uniCartApp.product.tag">Tag</span></dt>
+        <dd>
+          <span *ngFor="let tag of product.tags; let last = last">
+            <a [routerLink]="['/tag', tag.id, 'view']">{{ tag.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/product', product.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

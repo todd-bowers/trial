@@ -27,7 +27,7 @@ public class MysqlTestContainer implements SqlTestContainer {
         if (null == mysqlContainer) {
             mysqlContainer =
                 new MySQLContainer<>("mysql:8.0.29-debian")
-                    .withDatabaseName("trial")
+                    .withDatabaseName("UniCart")
                     .withTmpFs(Collections.singletonMap("/testtmpfs", "rw"))
                     .withLogConsumer(new Slf4jLogConsumer(log))
                     .withReuse(true)

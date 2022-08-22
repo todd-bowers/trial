@@ -1,0 +1,35 @@
+application {
+  config {
+    baseName UniCart
+    packageName rocks.zipcode.trial
+    applicationType monolith
+    prodDatabaseType mysql
+  }
+  entities *
+}
+
+entity Cart {
+name String required minlength(3)
+handle String required minlength(2)
+}
+
+entity Product {
+title String required
+price Double required
+reviews Double required
+imageURL String required
+productURL String required
+}
+
+entity Tag {
+name String required minlength(2)
+}
+
+relationship ManyToOne {
+Cart{user(login)} to User,
+Product{cart(name)} to Cart
+}
+
+relationship ManyToMany {
+Product{tag(name)} to Tag{entry}
+}
